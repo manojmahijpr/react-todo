@@ -12,7 +12,7 @@ export default class Todo extends React.Component {
   render() {
     const { complete, edit, text, id } = this.props;
 
-    const icon = complete ? "\u2714" : "\u2716"
+    const isCompleteIcon = complete ? "fa fa-check" : "fa fa-times"
 
     if (edit) {
       return (
@@ -25,14 +25,25 @@ export default class Todo extends React.Component {
     return (
       <li className="list-group-item">
         <span>{text}</span>
-        <span
-          id={id}
-          className="pull-right" 
-          onClick={this.deleteTodo}
-          style={{ 
-            cursor: 'pointer'
-          }}
-          >{icon}</span>
+        <div className="pull-right">
+          <span
+            id={id}
+            className="fa fa-trash"
+            onClick={this.deleteTodo}
+            style={{ 
+              cursor: 'pointer',
+              color: 'red',
+              paddingRight: '10px'
+            }}></span>
+          <span
+            className={`${isCompleteIcon}`}
+            style={{ 
+              cursor: 'pointer',
+              color: 'gray'
+            }}></span>
+            
+        </div>
+        
       </li>
     );
   }

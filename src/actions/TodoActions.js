@@ -13,3 +13,26 @@ export function deleteTodo(id) {
         id
     });
 }
+
+export function reloadTodo() {
+    dispatcher.dispatch({
+        type: 'FETCH_TODOS'
+    });
+    setTimeout(()=> {
+        dispatcher.dispatch({
+            type: 'RECEIVE_TODOS',
+            todos: [
+                {
+                    id: 78542361,
+                    text:'Learning React',
+                    complete: true
+                },
+                {
+                    id: 80819236,
+                    text:'Building Projects',
+                    complete: false,
+                }
+            ]
+        })
+    }, 500);
+}
